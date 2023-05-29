@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<connection-fields>
+    <field name='server' label='Server' category='endpoint' value-type='string'>
+        <validation-rule reg-exp='^(([a-zA-Z0-9\-]|[a-zA-Z0-9\-][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]|[A-Za-z0-9\-][A-Za-z0-9\-]*[A-Za-z0-9])$'/>
+    </field>
+    <field name='port' label='Port' category='endpoint' value-type='string' default-value=''/>
+    <field name='authentication' label='Authentication' category='authentication' value-type='string' editable='false' default-value='auth-user-pass'/>
+    <field name='username' label='Username' category='authentication' value-type='string'/>
+    <field name='password' label='Password' category='authentication' value-type='string' secure='true' optional='true'/>
+    <field name='ssl' label='SSL' value-type='boolean' category='general' default-value=''>
+        <boolean-options>
+            <false-value value=''/>
+            <true-value value='require'/>
+        </boolean-options>
+    </field>
+    <field name='v-custom-connection-params' label='Custom Connection Parameters (key1=value1,key2=value2)' category='advanced' value-type='string' optional='true' default-value='query_timeout=120'>
+        <validation-rule reg-exp='^((([a-zA-Z0-9\_]+=[a-zA-Z0-9\_\-\.\/\@\*\%]+,)*([a-zA-Z0-9\_]+=[a-zA-Z0-9\_\-\.\/\@\*\%]+))?)$'/>
+    </field>
+    <field name='v-custom-url-params' label='JDBC Driver URL Parameters (key1=value1,key2=value2)' category='advanced' value-type='string' optional='true'>
+        <validation-rule reg-exp='^((([a-zA-Z0-9\_]+=[a-zA-Z0-9\_\-\.\/\@\*\%]+,)*([a-zA-Z0-9\_]+=[a-zA-Z0-9\_\-\.\/\@\*\%]+))?)$'/>
+    </field>
+</connection-fields>
