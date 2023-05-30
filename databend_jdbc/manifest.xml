@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8' ?>
-<connector-plugin class='databend_jdbc' superclass='jdbc' plugin-version='0.0.8' name='Databend JDBC' version='18.1' min-version-tableau='2022.3'>
+<connector-plugin class='databend_jdbc' superclass='jdbc' plugin-version='0.0.8' name='Databend JDBC' version='20.1' min-version-tableau='2022.3'>
     <vendor-information>
         <company name='Databend, Inc.'/>
         <support-link url='https://github.com/databendcloud/databend-tableau-connector-jdbc/issues'/>
