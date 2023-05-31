@@ -377,15 +377,6 @@
       <argument type='str' />
       <argument type='str' />
     </function>
-    <function group='string' name='PROPER' return-type='str'>
-      <formula>arrayStringConcat(arrayMap(x -> concat(x.1, x.2, x.3, x.4), flatten(arrayConcat(arrayZip(extractAllGroupsHorizontal(%1, '([^\p{L}\d]*)([\p{L}\d]{1})([\p{L}\d]*)([^\p{L}\d]*)')[1], arrayMap(x -> upperUTF8(x), extractAllGroupsHorizontal(%1, '([^\p{L}\d]*)([\p{L}\d]{1})([\p{L}\d]*)([^\p{L}\d]*)')[2]), arrayMap(x -> lowerUTF8(x), extractAllGroupsHorizontal(%1, '([^\p{L}\d]*)([\p{L}\d]{1})([\p{L}\d]*)([^\p{L}\d]*)')[3]), extractAllGroupsHorizontal(%1, '([^\p{L}\d]*)([\p{L}\d]{1})([\p{L}\d]*)([^\p{L}\d]*)')[4])))))</formula>
-      <argument type='str' />
-    </function>
-    <function group='string' name='REGEXP_EXTRACT' return-type='str'>
-      <formula>replaceRegexpAll(to_String(extract(%1,%2)), '[\[\]\']' , '')</formula>
-      <argument type='str' />
-      <argument type='str' />
-    </function>
     <function group='string' name='REGEXP_EXTRACT_NTH' return-type='str'>
       <formula>to_String(arrayElement(arrayFlatten(extractAllGroupsVertical(%1,%2)),%3))</formula>
       <argument type='str' />
@@ -394,12 +385,6 @@
     </function>
     <function group='string' name='REGEXP_MATCH' return-type='bool'>
       <formula>match(%1, %2)</formula>
-      <argument type='str' />
-      <argument type='str' />
-    </function>
-    <function group='string' name='REGEXP_REPLACE' return-type='str'>
-      <formula>replaceRegexpAll(%1, %2, %3)</formula>
-      <argument type='str' />
       <argument type='str' />
       <argument type='str' />
     </function>
@@ -447,10 +432,6 @@
       <argument type='str' />
       <argument type='str' />
     </function>
-    <function group='string' name='TLD' return-type='str'>
-      <formula>topLevelDomain(%1)</formula>
-      <argument type='str' />
-    </function>
     <function group='string' name='TRIM' return-type='str'>
       <formula>TRIM(%1)</formula>
       <argument type='str' />
@@ -472,7 +453,7 @@
       <argument type='int' />
     </function>
     <function group='cast' name='DATE' return-type='date'>
-      <formula>to_Date(parseDateTimeBestEffortOrNull(%1))</formula>
+      <formula>to_Date(%1)</formula>
       <argument type='str' />
     </function>
     <function group='cast' name='DATE' return-type='date'>
@@ -492,7 +473,7 @@
       <argument type='int' />
     </function>
     <function group='cast' name='DATETIME' return-type='datetime'>
-      <formula>parseDateTimeBestEffortOrNull(%1)</formula>
+      <formula>to_datetime(%1)</formula>
       <argument type='str' />
     </function>
     <function group='cast' name='DATETIME' return-type='datetime'>

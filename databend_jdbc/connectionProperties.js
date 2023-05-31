@@ -13,8 +13,9 @@
     props["user"] = attr["username"];
     props["password"] = attr["password"];
 
-    if (attr["ssl"] == "require") {
+    if (attr["sslmode"] == "require") {
         props["ssl"] = "true";
+        props["sslmode"] = "STRICT";
     }
 
     return props;
