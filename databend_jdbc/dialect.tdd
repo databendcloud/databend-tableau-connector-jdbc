@@ -473,14 +473,6 @@
       <argument type='int' />
     </function>
     <function group='cast' name='DATETIME' return-type='datetime'>
-      <formula>to_datetime(%1)</formula>
-      <argument type='str' />
-    </function>
-    <function group='cast' name='DATETIME' return-type='datetime'>
-      <formula>TRY_CAST(%1 AS Nullable(TIMESTAMP))</formula>
-      <argument type='datetime' />
-    </function>
-    <function group='cast' name='DATETIME' return-type='datetime'>
       <formula>TRY_CAST(%1 AS Nullable(TIMESTAMP))</formula>
       <argument type='date' />
     </function>
@@ -499,14 +491,6 @@
     <function group='cast' name='FLOAT' return-type='real'>
       <formula>TRY_CAST(%1 AS Nullable(DOUBLE))</formula>
       <argument type='str' />
-    </function>
-    <function group='cast' name='FLOAT' return-type='real'>
-      <formula>(toUnixTimestamp(%1) / 86400.0 + 25567.0)</formula>
-      <argument type='datetime' />
-    </function>
-    <function group='cast' name='FLOAT' return-type='real'>
-      <formula>(toUnixTimestamp(TO_DATETIME(%1)) / 86400.0 + 25567.0)</formula>
-      <argument type='date' />
     </function>
     <function group='cast' name='INT' return-type='int'>
       <formula>TRY_CAST(%1 AS Nullable(UInt8))</formula>
@@ -580,30 +564,10 @@
       <argument type='str' />
       <argument type='str' />
     </function>
-    <function group='logical' name='IFNULL' return-type='datetime'>
-      <formula>ifNull(%1, %2)</formula>
-      <argument type='datetime' />
-      <argument type='datetime' />
-    </function>
-    <function group='logical' name='IFNULL' return-type='datetime'>
-      <formula>ifNull(%1, TO_DATETIME(%2))</formula>
-      <argument type='datetime' />
-      <argument type='date' />
-    </function>
-    <function group='logical' name='IFNULL' return-type='datetime'>
-      <formula>ifNull(TO_DATETIME(%1), %2)</formula>
-      <argument type='date' />
-      <argument type='datetime' />
-    </function>
     <function group='logical' name='IFNULL' return-type='date'>
       <formula>ifNull(%1, %2)</formula>
       <argument type='date' />
       <argument type='date' />
-    </function>
-    <function group='logical' name='IFNULL' return-type='spatial'>
-      <formula>ifNull(%1, %2)</formula>
-      <argument type='spatial' />
-      <argument type='spatial' />
     </function>
     <function group='logical' name='IIF' return-type='bool'>
       <formula>((%1 AND %2) OR ((NOT %1) AND %3))</formula>
@@ -1157,16 +1121,6 @@
       <argument type='datetime' />
       <argument type='int' />
     </function>
-    <function group='operator' name='+' return-type='datetime'>
-      <formula>(TO_DATETIME(%1) + %2 * 86400.0)</formula>
-      <argument type='date' />
-      <argument type='real' />
-    </function>
-    <function group='operator' name='+' return-type='date'>
-      <formula>to_Date(TO_DATETIME(%1) + %2 * 86400.0)</formula>
-      <argument type='date' />
-      <argument type='int' />
-    </function>
     <function group='operator' name='-' return-type='real'>
       <formula>(-%1)</formula>
       <argument type='real' />
@@ -1180,21 +1134,6 @@
       <formula>(%1 - %2) / 86400.0</formula>
       <argument type='datetime' />
       <argument type='datetime' />
-    </function>
-    <function group='operator' name='-' return-type='real'>
-      <formula>(%1 - TO_DATETIME(%2)) / 86400.0</formula>
-      <argument type='datetime' />
-      <argument type='date' />
-    </function>
-    <function group='operator' name='-' return-type='real'>
-      <formula>(TO_DATETIME(%1) - %2) / 86400.0</formula>
-      <argument type='date' />
-      <argument type='datetime' />
-    </function>
-    <function group='operator' name='-' return-type='real'>
-      <formula>(TO_DATETIME(%1) - TO_DATETIME(%2)) / 86400.0</formula>
-      <argument type='date' />
-      <argument type='date' />
     </function>
     <function group='operator' name='-' return-type='int'>
       <formula>(-%1)</formula>
@@ -1371,16 +1310,6 @@
       <argument type='datetime' />
     </function>
     <function group='operator' name='==' return-type='bool'>
-      <formula>(%1 = to_DateTime(%2))</formula>
-      <argument type='datetime' />
-      <argument type='date' />
-    </function>
-    <function group='operator' name='==' return-type='bool'>
-      <formula>(CAST(%1 AS Nullable(TIMESTAMP)) = %2)</formula>
-      <argument type='date' />
-      <argument type='datetime' />
-    </function>
-    <function group='operator' name='==' return-type='bool'>
       <formula>(%1 = %2)</formula>
       <argument type='date' />
       <argument type='date' />
@@ -1456,11 +1385,6 @@
       <argument type='date' />
     </function>
     <function group='operator' name='&gt;=' return-type='bool'>
-      <formula>(TO_DATETIME(%1) &gt;= %2)</formula>
-      <argument type='date' />
-      <argument type='datetime' />
-    </function>
-    <function group='operator' name='&gt;=' return-type='bool'>
       <formula>(%1 &gt;= %2)</formula>
       <argument type='date' />
       <argument type='date' />
@@ -1526,10 +1450,6 @@
     </function>
     <function group='date' name='TODAY' return-type='date'>
       <formula>today()</formula>
-    </function>
-    <function group='date' name='USEC_TO_TIMESTAMP' return-type='datetime'>
-      <formula>TO_DATETIME(fromUnixTimestamp64Micro(%1))</formula>
-      <argument type='int' />
     </function>
     <function group='date' name='YEAR' return-type='int'>
       <formula>to_Year(%1)</formula>
