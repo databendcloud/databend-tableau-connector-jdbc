@@ -25,7 +25,7 @@ Requirements
     - macOS: `~/Documents/My Tableau Repository/Connectors`
     - Windows: `C:\Users\[Windows User]\Documents\My Tableau Repository\Connectors`
 3. Run Tableau Desktop With Disabling signature verification
-   - On Tableau Desktop, you use this command: -DDisableVerifyConnectorPluginSignature=true
+   - On Tableau Desktop, you use this command:  /Applications/Tableau\ Desktop\ 2022.3.app/Contents/MacOS/Tableau  -DDisableVerifyConnectorPluginSignature=true
    - On server, you can disable signature verification by setting native_api.disable_verify_connector_plugin_signature to true via TSM.
 4. In Tableau Desktop: **Connect** ➔ **To a Server** ➔ **Databend JDBC by Databend, Inc.**
 
