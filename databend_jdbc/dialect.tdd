@@ -319,12 +319,12 @@
       <argument type='str' />
     </function>
     <function group='string' name='LEFT' return-type='str'>
-      <formula>CASE WHEN ISNULL(%2) OR %2 &lt; 1 THEN NULL&#10; ELSE SUBSTRING(%1,1,CAST(TRUNC(%2) AS Nullable(INTEGER))) END</formula>
+      <formula>CASE WHEN IS_NULL(%2) OR %2 &lt; 1 THEN NULL&#10; ELSE SUBSTRING(%1,1,CAST(TRUNC(%2) AS Nullable(INTEGER))) END</formula>
       <argument type='str' />
       <argument type='real' />
     </function>
     <function group='string' name='LEFT' return-type='str'>
-      <formula>CASE WHEN ISNULL(%2) OR %2 &lt; 1 THEN NULL&#10; ELSE SUBSTRING(%1,1,%2) END</formula>
+      <formula>CASE WHEN IS_NULL(%2) OR %2 &lt; 1 THEN NULL&#10; ELSE SUBSTRING(%1,1,%2) END</formula>
       <argument type='str' />
       <argument type='int' />
     </function>
@@ -395,12 +395,12 @@
       <argument type='str' />
     </function>
     <function group='string' name='RIGHT' return-type='str'>
-      <formula>CASE WHEN ISNULL(%2) OR CAST(TRUNC(%2) AS Nullable(INTEGER)) &lt; 1 THEN NULL&#10; ELSE SUBSTRING(%1,-CAST(TRUNC(%2) AS Nullable(INTEGER))) END</formula>
+      <formula>CASE WHEN IS_NULL(%2) OR CAST(TRUNC(%2) AS Nullable(INTEGER)) &lt; 1 THEN NULL&#10; ELSE SUBSTRING(%1,-CAST(TRUNC(%2) AS Nullable(INTEGER))) END</formula>
       <argument type='str' />
       <argument type='real' />
     </function>
     <function group='string' name='RIGHT' return-type='str'>
-      <formula>CASE WHEN ISNULL(%2) OR %2 &lt; 1 THEN NULL&#10; ELSE SUBSTRING(%1,-%2) END</formula>
+      <formula>CASE WHEN IS_NULL(%2) OR %2 &lt; 1 THEN NULL&#10; ELSE SUBSTRING(%1,-%2) END</formula>
       <argument type='str' />
       <argument type='int' />
     </function>
@@ -413,11 +413,11 @@
       <argument type='str' />
     </function>
     <function group='string' name='SPACE' return-type='str'>
-      <formula>repeat(&apos; &apos;,CASE WHEN ISNULL(%1) OR %1 &lt; 1 THEN NULL&#10; ELSE TRY_CAST(%1 AS Nullable(UInt8)) END)</formula>
+      <formula>repeat(&apos; &apos;,CASE WHEN IS_NULL(%1) OR %1 &lt; 1 THEN NULL&#10; ELSE TRY_CAST(%1 AS Nullable(UInt8)) END)</formula>
       <argument type='real' />
     </function>
     <function group='string' name='SPACE' return-type='str'>
-      <formula>repeat(&apos; &apos;,CASE WHEN ISNULL(%1) OR %1 &lt; 1 THEN NULL&#10; ELSE TRY_CAST(%1 AS Nullable(UInt8)) END)</formula>
+      <formula>repeat(&apos; &apos;,CASE WHEN IS_NULL(%1) OR %1 &lt; 1 THEN NULL&#10; ELSE TRY_CAST(%1 AS Nullable(UInt8)) END)</formula>
       <argument type='int' />
     </function>
     <function group='string' name='SPLIT' return-type='str'>
@@ -653,24 +653,24 @@
       <argument type='spatial' />
       <argument type='spatial' />
     </function>
-    <function group='logical' name='ISNULL' return-type='bool'>
-      <formula>isNull(%1)</formula>
+    <function group='logical' name='IS_NULL' return-type='bool'>
+      <formula>IS_NULL(%1)</formula>
       <argument type='bool' />
     </function>
-    <function group='logical' name='ISNULL' return-type='bool'>
-      <formula>isNull(%1)</formula>
+    <function group='logical' name='IS_NULL' return-type='bool'>
+      <formula>is_Null(%1)</formula>
       <argument type='real' />
     </function>
-    <function group='logical' name='ISNULL' return-type='bool'>
-      <formula>isNull(%1)</formula>
+    <function group='logical' name='IS_NULL' return-type='bool'>
+      <formula>is_Null(%1)</formula>
       <argument type='str' />
     </function>
-    <function group='logical' name='ISNULL' return-type='bool'>
-      <formula>isNull(%1)</formula>
+    <function group='logical' name='IS_NULL' return-type='bool'>
+      <formula>is_Null(%1)</formula>
       <argument type='datetime' />
     </function>
-    <function group='logical' name='ISNULL' return-type='bool'>
-      <formula>isNull(%1)</formula>
+    <function group='logical' name='IS_NULL' return-type='bool'>
+      <formula>is_Null(%1)</formula>
       <argument type='spatial' />
     </function>
     <function group='aggregate' name='AVG' return-type='real'>
