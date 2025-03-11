@@ -17,7 +17,7 @@ Requirements
 - Databend **1.0.0+**
 
 ## Installation (Tableau Desktop)
-1. Download the [Databend JDBC Driver](https://github.com/databendcloud/databend-jdbc) (version 0.0.8 required), and place the `databend-jdbc-0.0.8.jar` to:
+1. Download the [Databend JDBC Driver](https://github.com/databendcloud/databend-jdbc) (version >= 0.3.4 required), and place the `databend-jdbc-0.3.4.jar` to:
     - macOS: `~/Library/Tableau/Drivers`
     - Windows: `C:\Program Files\Tableau\Drivers`
     - You need to create the folder if it doesn't already exist
@@ -30,7 +30,7 @@ Requirements
 4. In Tableau Desktop: **Connect** ➔ **To a Server** ➔ **Databend JDBC by Databend, Inc.**
 
 ## Installation (Tableau Prep Builder)
-1. Download the [Databend JDBC Driver](https://github.com/databendcloud/databend-jdbc) (version 0.0.8 required) and place the `databend-jdbc-0.0.8.jar` to:
+1. Download the [Databend JDBC Driver](https://github.com/databendcloud/databend-jdbc) (version >=0.3.4 required) and place the `databend-jdbc-0.3.4.jar` to:
     - macOS: `~/Library/Tableau/Drivers`
     - Windows: `C:\Program Files\Tableau\Drivers`
     - You need to create the folder if it doesn't already exist
@@ -41,7 +41,7 @@ Requirements
 4. In Tableau Prep Builder: **Connections** ➔ **+** ➔ **To a Server** ➔ **Databend JDBC by Databend, Inc.**
 
 ## Installation (Tableau Server)
-1. Download the [Databend JDBC Driver](https://github.com/databendcloud/databend-jdbc) (version 0.0.8 required) and place the `databend-jdbc-0.0.8.jar` to:
+1. Download the [Databend JDBC Driver](https://github.com/databendcloud/databend-jdbc) (version >=0.3.4 required) and place the `databend-jdbc-0.3.4.jar` to:
     - Linux: `/opt/tableau/tableau_driver/jdbc`
     - Windows: `C:\Program Files\Tableau\Drivers`
     - You need to create the directory if it doesn't already exist
