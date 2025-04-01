@@ -71,7 +71,7 @@ Requirements
 Feel free to set session level [settings](https://databend.rs/doc/sql-reference/system-tables/system-settings) using
 ```
 SET my_setting=value;
-``` 
+```
 ### Advanced tab
 In 99% of cases you don't need the Advanced tab, for the remaining 1% you can use the following settings:
 - **Custom Connection Parameters**. By default, `query_timeout` is already specified, this parameter may need to be changed if some extracts are updated for a very long time. The value of this parameter is specified in milliseconds. The rest of the parameters can be found [here](https://github.com/databendcloud/databend-jdbc/blob/main/docs/Connection.md), add them in this field separated by commas
