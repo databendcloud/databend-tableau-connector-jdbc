@@ -27,11 +27,11 @@
       <argument type='int' />
     </function>
     <function group='cast' name='DATE' return-type='date'>
-      <formula>date_trunc(&apos;day&apos;, CAST(&apos;1900-01-01&apos; AS DATE) + INTERVAL '%1 DAY')</formula>
+      <formula>date_trunc(DAY, CAST(&apos;1900-01-01&apos; AS DATE) + INTERVAL %1 DAY)</formula>
       <argument type='real' />
     </function>
     <function group='cast' name='DATETIME' return-type='datetime'>
-      <formula>(CAST(&apos;1900-01-01 00:00:00&apos; AS TIMESTAMP) + INTERVAL '%1 DAY')</formula>
+      <formula>(CAST(&apos;1900-01-01 00:00:00&apos; AS TIMESTAMP) + INTERVAL %1 DAY)</formula>
       <argument type='real' />
     </function>
     <function group='cast' name='DATETIME' return-type='datetime'>
@@ -182,7 +182,7 @@
      <date-function name='DATENAME' return-type='str'>
       <formula>STRFTIME(%2, &apos;%1&apos;)</formula>
       <formula part='quarter'>(CAST((((EXTRACT(MONTH FROM %2) - 1) // 3) + 1) AS TEXT))</formula>
-      <formula part='week'>CAST(((7 + EXTRACT(DOY FROM %2) - 1 + EXTRACT(DOW FROM DATE_TRUNC(&apos;YEAR&apos;, %2))) // 7) AS TEXT)</formula>
+      <formula part='week'>CAST(((7 + EXTRACT(DOY FROM %2) - 1 + EXTRACT(DOW FROM DATE_TRUNC(YEAR, %2))) // 7) AS TEXT)</formula>
       <formula part='iso-quarter'>CAST((LEAST(CAST((EXTRACT(WEEK FROM %2) - 1) AS BIGINT) // 13, 3) + 1) AS TEXT)</formula>
       <formula part='iso-week'>extract(week from %2)</formula>
       <formula part='iso-weekday'>extract(dow from %2)</formula>
@@ -191,7 +191,7 @@
       <argument type='datetime' />
     </date-function>
     <date-function name='DATENAME' return-type='str'>
-      <formula part='week'>CAST(((7 + EXTRACT(DOY FROM %2) - 1 + (CAST(7 + EXTRACT(DOW FROM DATE_TRUNC(&apos;YEAR&apos;, %2)) - %3 AS BIGINT) % 7) ) // 7) AS TEXT)</formula>
+      <formula part='week'>CAST(((7 + EXTRACT(DOY FROM %2) - 1 + (CAST(7 + EXTRACT(DOW FROM DATE_TRUNC(YEAR, %2)) - %3 AS BIGINT) % 7) ) // 7) AS TEXT)</formula>
       <argument type='localstr' />
       <argument type='datetime' />
       <argument type='localstr' />
@@ -202,14 +202,14 @@
       <argument type='str' />
     </date-function>
     <date-function name='DATETRUNC' return-type='datetime'>
-      <formula>CAST( DATE_TRUNC( &apos;%1&apos;, CAST(%2 AS TIMESTAMP) ) AS TIMESTAMP)</formula>
-      <formula part='quarter'>CAST(DATE_TRUNC(&apos;QUARTER&apos;, CAST(%2 AS DATE)) AS TIMESTAMP)</formula>
-      <formula part='week'>CAST((DATE_TRUNC( &apos;DAY&apos;, CAST(%2 AS DATE) ) + (-EXTRACT(DOW FROM %2) * INTERVAL &apos;1 DAY&apos;)) AS TIMESTAMP)</formula>
+      <formula>CAST( DATE_TRUNC(%1, CAST(%2 AS TIMESTAMP) ) AS TIMESTAMP)</formula>
+      <formula part='quarter'>CAST(DATE_TRUNC(QUARTER, CAST(%2 AS DATE)) AS TIMESTAMP)</formula>
+      <formula part='week'>CAST((DATE_TRUNC( DAY, CAST(%2 AS DATE) ) + (-EXTRACT(DOW FROM %2) * INTERVAL &apos;1 DAY&apos;)) AS TIMESTAMP)</formula>
       <argument type='localstr' />
       <argument type='datetime' />
     </date-function>
     <date-function name='DATETRUNC' return-type='datetime'>
-      <formula part='week'>CAST(CAST(DATE_TRUNC( &apos;DAY&apos;, CAST(%2 AS TIMESTAMP)) AS DATE) - (((7 + CAST(EXTRACT(DOW FROM %2) AS BIGINT) - %3) % 7) * INTERVAL &apos;1 DAY&apos;) AS TIMESTAMP)</formula>
+      <formula part='week'>CAST(CAST(DATE_TRUNC( DAY, CAST(%2 AS TIMESTAMP)) AS DATE) - (((7 + CAST(EXTRACT(DOW FROM %2) AS BIGINT) - %3) % 7) * INTERVAL 1 DAY) AS TIMESTAMP)</formula>
       <argument type='localstr' />
       <argument type='datetime' />
       <argument type='localstr' />
