@@ -47,6 +47,47 @@
       <argument type='real' />
       <argument type='real' />
     </function>
+    <function group='numeric' name='TRUNC' return-type='real'>
+      <formula>TRUNCATE(%1, 0)</formula>
+      <argument type='real' />
+    </function>
+    <function group='numeric' name='LN' return-type='real'>
+      <formula>if(%1 &gt; 0, LN(%1), NULL)</formula>
+      <argument type='real' />
+    </function>
+    <function group='numeric' name='LOG' return-type='real'>
+      <formula>if(%1 &gt; 0, LOG10(%1), NULL)</formula>
+      <argument type='real' />
+    </function>
+    <function group='numeric' name='LOG' return-type='real'>
+      <formula>if(%1 &gt; 0 AND %2 &gt; 0, LN(%1) / LN(%2), NULL)</formula>
+      <argument type='real' />
+      <argument type='real' />
+    </function>
+    <function group='numeric' name='LOG2' return-type='real'>
+      <formula>if(%1 &gt; 0, LOG2(%1), NULL)</formula>
+      <argument type='real' />
+    </function>
+    <function group='numeric' name='MAX' return-type='real'>
+      <formula>GREATEST(%1, %2)</formula>
+      <argument type='real' />
+      <argument type='real' />
+    </function>
+    <function group='numeric' name='MAX' return-type='int'>
+      <formula>GREATEST(%1, %2)</formula>
+      <argument type='int' />
+      <argument type='int' />
+    </function>
+    <function group='numeric' name='MIN' return-type='real'>
+      <formula>LEAST(%1,%2)</formula>
+      <argument type='real' />
+      <argument type='real' />
+    </function>
+    <function group='numeric' name='MIN' return-type='int'>
+      <formula>LEAST(%1,%2)</formula>
+      <argument type='int' />
+      <argument type='int' />
+    </function>
     <function group='date' name='ISDATE' return-type='bool'>
       <formula>(TRY_CAST(%1 AS TIMESTAMP) IS NOT NULL)</formula>
       <argument type='str' />
