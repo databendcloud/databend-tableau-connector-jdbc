@@ -1,0 +1,63 @@
+# This is a basic workflow that is manually triggered
+
+name: Package Databend Taco
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  package:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - name: Checkout Tableau connector
+      uses: actions/checkout@v4
+      with:
+        path: taco
+
+    - name: Checkout SDK
+      uses: actions/checkout@v4
+      with:
+        repository: tableau/connector-plugin-sdk
+        path: sdk
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+
+    - name: Create Virtual Environment
+      shell: bash
+      run: |
+        pushd sdk
+        python -m venv .venv
+        popd
+
+    - name: Package Taco
+      shell: bash
+      run: |
+        pushd sdk
+        source .venv/bin/activate
+        cd connector-packager
+        python setup.py install
+        python -m connector_packager.package ../../taco/databend_jdbc
+        popd
+
+    - name: Upload Taco
+      uses: actions/upload-artifact@v4
+      with:
+        name: databend_taco
+        path: |
+          sdk/connector-packager/packaged-connector/databend_jdbc*.taco
+
+    - name: Upload Connector
+      uses: actions/upload-artifact@v4
+      with:
+        name: databend_jdbc
+        path: |
+          taco/databend_jdbc
