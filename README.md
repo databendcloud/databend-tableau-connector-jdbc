@@ -66,6 +66,14 @@ Requirements
     tsm restart
     ```
     - Note that whenever you add, remove, or update a connector, you need to restart the server to see the changes.
+
+4. Disable sign validation when starting Tableau app
+
+```
+./Tableau -DDisableVerifyConnectorPluginSignature=true
+```
+
+
 ## Connection tips
 ### Initial SQL tab
 Feel free to set session level [settings](https://databend.rs/doc/sql-reference/system-tables/system-settings) using
